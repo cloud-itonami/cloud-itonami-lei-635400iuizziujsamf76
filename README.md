@@ -14,3 +14,30 @@ Read-only reference/archive repository — not a governed Advisor/Governor actor
 Acquired by `scripts/lei-acquire.cljs` as part of the worldwide-broadening
 continuation that followed the 2026-07-25 coverage audit, which found the
 catalog's real reach was 27 countries with the United States at 55%.
+
+## Verified register citations
+
+`facts/catalog.edn` records what public registers say about this legal entity,
+with one citation per claim. It is not prose about the company — every row names
+a URL and a substring that must still be present in the response.
+
+```bash
+nbb tools/verify_citations.cljs facts/catalog.edn --min 15
+```
+
+Exit codes are three-valued on purpose, so a check that could not run never
+looks like a check that passed:
+
+| exit | meaning |
+|---|---|
+| 0 | every citation fetched, every claim substring still present |
+| 1 | drift — a URL answered but no longer carries its claim, or returned non-2xx |
+| 2 | could not answer — missing/unparseable catalog, zero entries, or below `--min` |
+
+Measured 2026-08-20: 19/19 citations pass. The gate was confirmed to
+discriminate — a broken URL and an altered claim substring each exit 1 naming
+the offending row, and floor/empty/parse failures each exit 2.
+
+Sources that were retrieved and **rejected** are kept in `:catalog/rejected`
+with the reason, so a later pass does not re-add them believing they were
+merely overlooked.

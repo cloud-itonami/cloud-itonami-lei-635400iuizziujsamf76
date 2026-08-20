@@ -1,0 +1,146 @@
+;; Verified public-register citations for the legal entity archived by this repository.
+;;
+;; Every row is checked live by tools/verify_citations.cljs:
+;;   * GET :cite/url must answer HTTP 2xx
+;;   * :cite/expect-substring must appear in the response body
+;;
+;; A URL that cannot be fetched, or whose body no longer carries the claim, is a
+;; DRIFT and fails the gate. Nothing is recorded here that was not retrieved.
+;;
+;; Independent third-party archive. Not affiliated with, endorsed by, or
+;; sponsored by Fortum Oyj.
+
+{:catalog/subject
+ {:company/legal-name  "Fortum Oyj"
+  :company/lei         "635400IUIZZIUJSAMF76"
+  :company/jurisdiction "FI"
+  :company/business-id "1463611-4"
+  :company/legal-form-elf "DKUW"
+  :company/website     "https://www.fortum.com/"}
+
+ :catalog/retrieved "2026-08-20T06:29:21Z"
+
+ :catalog/entries
+ [{:cite/id "gleif-lei-record"
+   :cite/authority :gleif
+   :cite/claim "GLEIF publishes LEI 635400IUIZZIUJSAMF76 with legal name Fortum Oyj, jurisdiction FI, entity status ACTIVE, registration status ISSUED, corroboration level FULLY_CORROBORATED."
+   :cite/url "https://api.gleif.org/api/v1/lei-records/635400IUIZZIUJSAMF76"
+   :cite/expect-substring "Fortum Oyj"}
+
+  {:cite/id "gleif-lei-record-legal-address"
+   :cite/authority :gleif
+   :cite/claim "The registered legal and headquarters address is Keilalahdentie 2-4, 02150 Espoo, region FI-18, country FI."
+   :cite/url "https://api.gleif.org/api/v1/lei-records?filter%5Blei%5D=635400IUIZZIUJSAMF76"
+   :cite/expect-substring "Keilalahdentie"}
+
+  {:cite/id "gleif-entity-legal-form-dkuw"
+   :cite/authority :gleif
+   :cite/claim "The reported ELF code DKUW resolves to the Finnish legal form Osakeyhtio (sv: Aktiebolag)."
+   :cite/url "https://api.gleif.org/api/v1/entity-legal-forms/DKUW"
+   :cite/expect-substring "Osakeyhti"}
+
+  {:cite/id "gleif-registration-authority-ra000188"
+   :cite/authority :gleif
+   :cite/claim "The registration authority recorded on the LEI, RA000188, is the Finnish trade register operated by PRH."
+   :cite/url "https://api.gleif.org/api/v1/registration-authorities/RA000188"
+   :cite/expect-substring "prh.fi"}
+
+  {:cite/id "gleif-managing-lou-record"
+   :cite/authority :gleif
+   :cite/claim "The LEI is maintained by managing LOU 549300O897ZC5H7CY412, Nordic Legal Entity Identifier AB."
+   :cite/url "https://api.gleif.org/api/v1/lei-records/549300O897ZC5H7CY412"
+   :cite/expect-substring "Nordic Legal Entity Identifier"}
+
+  {:cite/id "gleif-lei-issuer-accreditation"
+   :cite/authority :gleif
+   :cite/claim "That managing LOU is listed by GLEIF as an accredited LEI issuer."
+   :cite/url "https://api.gleif.org/api/v1/lei-issuers/549300O897ZC5H7CY412"
+   :cite/expect-substring "Nordic"}
+
+  {:cite/id "gleif-direct-children"
+   :cite/authority :gleif
+   :cite/claim "GLEIF Level 2 data reports exactly one direct child of this entity: Fortum Sweden AB."
+   :cite/url "https://api.gleif.org/api/v1/lei-records/635400IUIZZIUJSAMF76/direct-children"
+   :cite/expect-substring "Fortum Sweden AB"}
+
+  {:cite/id "gleif-direct-child-fortum-sweden"
+   :cite/authority :gleif
+   :cite/claim "That direct child is LEI 6367009LRC7RZQD4V918, Fortum Sweden AB."
+   :cite/url "https://api.gleif.org/api/v1/lei-records/6367009LRC7RZQD4V918"
+   :cite/expect-substring "Fortum Sweden AB"}
+
+  {:cite/id "gleif-direct-parent-reporting-exception"
+   :cite/authority :gleif
+   :cite/claim "No direct parent is reported; GLEIF records the reporting exception reason NON_CONSOLIDATING."
+   :cite/url "https://api.gleif.org/api/v1/lei-records/635400IUIZZIUJSAMF76/direct-parent-reporting-exception"
+   :cite/expect-substring "NON_CONSOLIDATING"}
+
+  {:cite/id "gleif-ultimate-parent-reporting-exception"
+   :cite/authority :gleif
+   :cite/claim "No ultimate parent is reported either; the same NON_CONSOLIDATING exception is recorded."
+   :cite/url "https://api.gleif.org/api/v1/lei-records/635400IUIZZIUJSAMF76/ultimate-parent-reporting-exception"
+   :cite/expect-substring "NON_CONSOLIDATING"}
+
+  {:cite/id "prh-ytj-open-data-company"
+   :cite/authority :prh
+   :cite/claim "The Finnish Business Information System records business ID 1463611-4 under the name Fortum Oyj; this is the identifier GLEIF carries as registeredAs."
+   :cite/url "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=1463611-4"
+   :cite/expect-substring "1463611-4"}
+
+  {:cite/id "prh-trade-register"
+   :cite/authority :prh
+   :cite/claim "PRH operates the Finnish Trade Register, the register named by RA000188."
+   :cite/url "https://www.prh.fi/en/kaupparekisteri.html"
+   :cite/expect-substring "Trade Register"}
+
+  {:cite/id "eu-business-registers-bris"
+   :cite/authority :eu
+   :cite/claim "Finnish register entries are reachable through the EU business registers interconnection on the European e-Justice portal."
+   :cite/url "https://e-justice.europa.eu/489/EN/business_registers__search_for_a_company_in_the_eu"
+   :cite/expect-substring "business register"}
+
+  {:cite/id "fortum-corporate-site"
+   :cite/authority :self-published
+   :cite/claim "The website recorded in blueprint.edn resolves to the entity's corporate site."
+   :cite/url "https://www.fortum.com/"
+   :cite/expect-substring "Fortum"}
+
+  {:cite/id "fortum-about-us"
+   :cite/authority :self-published
+   :cite/claim "The entity publishes a corporate About us surface."
+   :cite/url "https://www.fortum.com/about-us"
+   :cite/expect-substring "About us"}
+
+  {:cite/id "fortum-investors"
+   :cite/authority :self-published
+   :cite/claim "The entity publishes an investor-relations surface, consistent with a listed osakeyhtio."
+   :cite/url "https://www.fortum.com/investors"
+   :cite/expect-substring "Investors"}
+
+  {:cite/id "fortum-privacy-policy-source"
+   :cite/authority :self-published
+   :cite/claim "The document archived in 80-data/public/tos.journal.edn is still published at its recorded source URL."
+   :cite/url "https://www.fortum.com/legal/privacy"
+   :cite/expect-substring "Personal data protection"}
+
+  {:cite/id "gleif-lei-introduction"
+   :cite/authority :gleif
+   :cite/claim "GLEIF documents what an LEI is, which is the identifier scheme this repository is keyed on."
+   :cite/url "https://www.gleif.org/en/about-lei/introducing-the-legal-entity-identifier-lei"
+   :cite/expect-substring "Legal Entity Identifier"}
+
+  {:cite/id "gleif-golden-copy"
+   :cite/authority :gleif
+   :cite/claim "GLEIF publishes the concatenated LEI Golden Copy, the bulk form of the record cited above."
+   :cite/url "https://www.gleif.org/en/lei-data/gleif-golden-copy"
+   :cite/expect-substring "Golden Copy"}]
+
+ ;; Retrieved and rejected. Kept so a later pass does not re-add them believing
+ ;; they were merely overlooked.
+ :catalog/rejected
+ [{:cite/url "https://search.gleif.org/#/record/635400IUIZZIUJSAMF76"
+   :cite/why "Single-page app. The record id lives in the fragment, which is never sent to the server, so the response body carries no claim to check."}
+  {:cite/url "https://www.iso.org/standard/78829.html"
+   :cite/why "HTTP 403 to a non-browser client. Cannot be verified from the gate."}
+  {:cite/url "https://www.nasdaqomxnordic.com/shares/microsite?Instrument=HEX24708"
+   :cite/why "HTTP 200 but the instrument page is rendered client-side; the body does not contain the entity name."}]}
