@@ -22,7 +22,7 @@ with one citation per claim. It is not prose about the company — every row nam
 a URL and a substring that must still be present in the response.
 
 ```bash
-nbb tools/verify_citations.cljk facts/catalog.edn --min 15
+kbb --backend sci tools/verify_citations.cljk facts/catalog.edn --min 15
 ```
 
 Exit codes are three-valued on purpose, so a check that could not run never
